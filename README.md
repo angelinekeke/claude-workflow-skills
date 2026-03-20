@@ -89,7 +89,9 @@ claude-dev-workflow-skills/
 
 ## 贡献
 
-欢迎 PR。如果你有适合多会话项目开发的 Skill，欢迎提交。
+有好用的 Skill 欢迎提交 PR，一起完善这个合集。
+
+也欢迎加微信交流：**wdd_music1221**
 
 ---
 
