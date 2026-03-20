@@ -1,91 +1,85 @@
-# claude-dev-skills
+# claude-dev-workflow-skills
 
-A collection of Claude Code custom skills for developers who work on multi-phase projects across multiple sessions.
-
----
-
-## Skills Included
-
-### `/continue` — Resume from Last Session
-Reads your latest progress document, checks build status, and presents a summary of what was done and what's next — so you can pick up exactly where you left off without re-explaining context.
-
-### `/progress` — Save Session Progress
-Writes a structured progress document (`docs/progress-YYYY-MM-DD.md`) summarizing what was completed, what remains, known issues, and next steps. Run this before ending a session so your future self (and Claude) can resume smoothly.
+适用于 Claude Code 的自定义 Skill 合集，专为跨会话、多阶段项目开发者设计。
 
 ---
 
-## Installation
+## 包含的 Skills
 
-### Option A: Personal (works across all your projects)
+### `/continue` — 从上次进度继续开发
+自动读取最新的进度文档，检查构建状态，汇总上次做了什么、还剩什么——让你每次开新会话都能无缝接上，不用重新交代背景。
+
+### `/progress` — 保存本次会话进度
+在会话结束时写一份结构化的进度文档（`docs/progress-YYYY-MM-DD.md`），记录已完成、未完成、已知问题和下一步计划。下次开始时配合 `/continue` 使用，形成完整的开发工作流闭环。
+
+---
+
+## 安装方法
+
+### 方式 A：全局安装（所有项目都能用）
 
 ```bash
-# Clone into your global Claude skills directory
-git clone https://github.com/YOUR_USERNAME/claude-dev-skills ~/.claude/skills/
+git clone https://github.com/angelinekeke/claude-dev-workflow-skills ~/.claude/skills/claude-dev-workflow-skills
+cp -r ~/.claude/skills/claude-dev-workflow-skills/continue ~/.claude/skills/
+cp -r ~/.claude/skills/claude-dev-workflow-skills/progress ~/.claude/skills/
 ```
 
-Or copy individual skill folders:
+### 方式 B：项目内安装（仅限单个项目）
+
+在你的项目根目录执行：
 
 ```bash
-cp -r continue ~/.claude/skills/
-cp -r progress ~/.claude/skills/
+mkdir -p .claude/skills
+git clone https://github.com/angelinekeke/claude-dev-workflow-skills /tmp/claude-dev-workflow-skills
+cp -r /tmp/claude-dev-workflow-skills/continue .claude/skills/
+cp -r /tmp/claude-dev-workflow-skills/progress .claude/skills/
 ```
-
-### Option B: Project-specific (only for one repo)
-
-```bash
-# From your project root
-git clone https://github.com/YOUR_USERNAME/claude-dev-skills .claude/skills-temp
-cp -r .claude/skills-temp/continue .claude/skills/
-cp -r .claude/skills-temp/progress .claude/skills/
-rm -rf .claude/skills-temp
-```
-
-Or simply copy the skill folders you want into `.claude/skills/` in your project.
 
 ---
 
-## Usage
+## 使用方式
 
-Once installed, type the slash command in Claude Code:
+安装后，在 Claude Code 中直接输入斜杠命令即可：
 
-| Command | What it does |
-|---------|-------------|
-| `/continue` | Read latest progress doc → check build → show summary → ask what to work on |
-| `/progress` | Summarize this session → write `docs/progress-YYYY-MM-DD.md` |
+| 命令 | 效果 |
+|------|------|
+| `/continue` | 读取最新进度文档 → 检查构建状态 → 展示摘要 → 询问下一步任务 |
+| `/progress` | 汇总本次会话 → 写入 `docs/progress-YYYY-MM-DD.md` |
 
-**Recommended workflow:**
-1. Start every session with `/continue`
-2. End every session with `/progress`
+**推荐工作流：**
+1. 每次开始会话时运行 `/continue`
+2. 每次结束会话前运行 `/progress`
 
 ---
 
-## Directory Structure
+## 目录结构
 
 ```
-claude-dev-skills/
+claude-dev-workflow-skills/
 ├── README.md
+├── LICENSE
 ├── continue/
-│   └── SKILL.md        # /continue skill
+│   └── SKILL.md        # /continue 技能定义
 └── progress/
-    └── SKILL.md        # /progress skill
+    └── SKILL.md        # /progress 技能定义
 ```
 
 ---
 
-## Why These Skills?
+## 为什么需要这两个 Skills？
 
-If you work on long-running projects across many Claude Code sessions, you've probably experienced:
-- Re-explaining what you were doing at the start of every session
-- Losing track of where you stopped mid-feature
-- Forgetting to document progress before closing
+如果你在用 Claude Code 做长周期项目，大概遇到过这些情况：
+- 每次开新会话都要重新解释项目背景和当前进度
+- 功能做到一半，下次不知道从哪接
+- 会话结束前忘记记录进度，下次白费时间回忆
 
-These two skills turn "document-driven development" into a one-command habit.
+这两个 Skill 把「文档驱动开发」变成一个两条命令的习惯。
 
 ---
 
-## Contributing
+## 贡献
 
-PRs welcome. If you have a skill that helps with multi-session project development, feel free to submit it.
+欢迎 PR。如果你有适合多会话项目开发的 Skill，欢迎提交。
 
 ---
 
