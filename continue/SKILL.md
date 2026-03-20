@@ -3,43 +3,43 @@ name: continue
 description: Resume development from the last session by reading progress docs and summarizing what was done, what remains, and what to work on next. Use this skill when the user wants to pick up where they left off on a project.
 ---
 
-# Continue Development
+# 继续开发
 
-To resume a development session from where it was last left off:
+从上次会话结束的地方接续开发。
 
-## Step 1: Find the Latest Progress Document
+## 第一步：找到最新的进度文档
 
-Look for progress documents in the following locations, in order:
-1. `docs/progress-*.md` — find the most recent file by date in the filename
-2. `PROGRESS.md` or `progress.md` in the project root
-3. `TODO.md`, `ROADMAP.md`, or `CHANGELOG.md` in the project root
+按以下顺序查找进度文档：
+1. `docs/progress-*.md` — 根据文件名中的日期找最新的一个
+2. 项目根目录的 `PROGRESS.md` 或 `progress.md`
+3. 项目根目录的 `TODO.md`、`ROADMAP.md` 或 `CHANGELOG.md`
 
-Read the most recent progress document found.
+读取找到的最新进度文档。
 
-## Step 2: Check Current Build Status
+## 第二步：检查当前构建状态
 
-Run the project's build or type-check command to detect any existing errors:
-- TypeScript/Next.js: `npx tsc --noEmit 2>&1 | head -30` or `npm run build 2>&1 | tail -20`
-- Vue: `npm run build 2>&1 | tail -20`
-- General: check `package.json` for a `build`, `check`, or `typecheck` script
+运行项目的构建或类型检查命令，检测现有错误：
+- TypeScript/Next.js：`npx tsc --noEmit 2>&1 | head -30` 或 `npm run build 2>&1 | tail -20`
+- Vue：`npm run build 2>&1 | tail -20`
+- 通用：检查 `package.json` 中是否有 `build`、`check` 或 `typecheck` 脚本
 
-Report any errors found.
+汇报发现的任何错误。
 
-## Step 3: Summarize and Present Next Steps
+## 第三步：汇总并展示下一步
 
-Present a concise summary in the user's preferred language covering:
-- **Completed last session**: what was finished
-- **In progress / blocked**: anything started but not done, and any known issues
-- **Up next**: the recommended next task(s) based on the progress doc
+用用户偏好的语言（默认中文）简洁地汇报以下内容：
+- **上次已完成**：上次会话完成了什么
+- **进行中 / 卡住的**：已开始但未完成的内容，以及已知问题
+- **下一步**：根据进度文档推荐的下一个任务
 
-## Step 4: Ask the User
+## 第四步：询问用户
 
-Ask which task to work on, or confirm they want to start with the recommended next step.
+询问要做哪个任务，或确认是否从推荐的下一步开始。
 
 ---
 
-## Tips
+## 注意事项
 
-- If no progress document exists, check `git log --oneline -10` for recent commit history as a fallback
-- Keep the summary short — 5–10 bullet points max
-- Do not start implementing anything until the user confirms the task
+- 如果没有进度文档，用 `git log --oneline -10` 查看最近提交历史作为备选
+- 摘要保持简洁，最多 5–10 条要点
+- 用户确认任务前不要开始实现任何内容
