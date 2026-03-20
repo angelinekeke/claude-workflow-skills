@@ -12,6 +12,9 @@
 ### `/progress` — 保存本次会话进度
 在会话结束时写一份结构化的进度文档（`docs/progress-YYYY-MM-DD.md`），记录已完成、未完成、已知问题和下一步计划。下次开始时配合 `/continue` 使用，形成完整的开发工作流闭环。
 
+### `/daily-log` — 生成每日工作记录
+一天结束时，生成完整的工作记录文档，包含：今天完成的所有事项、踩过的坑与解决方案、经验总结与改进思考、后续待办。比 `/progress` 更全面，适合做个人成长记录或团队复盘。
+
 ---
 
 ## 安装方法
@@ -22,6 +25,7 @@
 git clone https://github.com/angelinekeke/claude-dev-workflow-skills ~/.claude/skills/claude-dev-workflow-skills
 cp -r ~/.claude/skills/claude-dev-workflow-skills/continue ~/.claude/skills/
 cp -r ~/.claude/skills/claude-dev-workflow-skills/progress ~/.claude/skills/
+cp -r ~/.claude/skills/claude-dev-workflow-skills/daily-log ~/.claude/skills/
 ```
 
 ### 方式 B：项目内安装（仅限单个项目）
@@ -33,6 +37,7 @@ mkdir -p .claude/skills
 git clone https://github.com/angelinekeke/claude-dev-workflow-skills /tmp/claude-dev-workflow-skills
 cp -r /tmp/claude-dev-workflow-skills/continue .claude/skills/
 cp -r /tmp/claude-dev-workflow-skills/progress .claude/skills/
+cp -r /tmp/claude-dev-workflow-skills/daily-log .claude/skills/
 ```
 
 ---
@@ -45,10 +50,12 @@ cp -r /tmp/claude-dev-workflow-skills/progress .claude/skills/
 |------|------|
 | `/continue` | 读取最新进度文档 → 检查构建状态 → 展示摘要 → 询问下一步任务 |
 | `/progress` | 汇总本次会话 → 写入 `docs/progress-YYYY-MM-DD.md` |
+| `/daily-log` | 记录全天工作 → 踩坑解决方案 → 经验总结 → 写入每日工作记录文档 |
 
 **推荐工作流：**
 1. 每次开始会话时运行 `/continue`
 2. 每次结束会话前运行 `/progress`
+3. 每天结束时运行 `/daily-log`，记录全天踩坑与收获
 
 ---
 
@@ -60,8 +67,10 @@ claude-dev-workflow-skills/
 ├── LICENSE
 ├── continue/
 │   └── SKILL.md        # /continue 技能定义
-└── progress/
-    └── SKILL.md        # /progress 技能定义
+├── progress/
+│   └── SKILL.md        # /progress 技能定义
+└── daily-log/
+    └── SKILL.md        # /daily-log 技能定义
 ```
 
 ---
